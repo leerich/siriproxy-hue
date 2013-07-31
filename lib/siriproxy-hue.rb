@@ -183,7 +183,7 @@ class SiriProxy::Plugin::Hue < SiriProxy::Plugin
 		request_completed
 	end
 	
-	listen_for %r/color(?: [a-z]*)? (?: the)? ([a-z ]??*)(?: the)? light(?:s)?/i do |entity|
+	listen_for %r/color (?: the)? ([a-z ]??*)(?: the)? light(?:s)?/i do |entity|
 		checkRegistration
 		matchedEntity = ensureMatchedEntity(entity)
 		setColorLoop(matchedEntity)
