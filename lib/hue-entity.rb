@@ -30,6 +30,11 @@ class HueEntity
 		@name = result[:name]
 	end
     
+    	def effect()
+    		url = "#{@bridgeIP}/api/#{@username}/lights/#{@number}/state"
+    		RestClient.put(url, {on: true}, {effect: colorloop}.to_json, content_type: :json)
+    	end
+    	
 	def power (value)
 		if self.type == :group
 		url = "#{@bridgeIP}/api/#{@username}/groups/#{@number}/action"
