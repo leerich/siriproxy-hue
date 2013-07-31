@@ -100,7 +100,7 @@ class SiriProxy::Plugin::Hue < SiriProxy::Plugin
     		matchedEntity.power(true)
     		matchedEntity.effect(colorloop)
     		say "I've color looped the #{matchedEntity.name} light for you."
-    		request_completed
+    		request_completed 
     	end
     	
 	def setRelativeBrightness(change, matchedEntity)
