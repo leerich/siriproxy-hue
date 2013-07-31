@@ -175,7 +175,7 @@ class SiriProxy::Plugin::Hue < SiriProxy::Plugin
 		setAbsoluteBrightness(value, matchedEntity)
 	end
 
-	listen_for %r/color(?: the)? ([a-z ]??*) light(?:s)?/i do |entity|
+	listen_for %r/color(?: the)? ([a-z ]*) light(?:s)?/i do |entity|
 		checkRegistration
 		matchedEntity = ensureMatchedEntity(entity)
 		setColorLoop(matchedEntity)
