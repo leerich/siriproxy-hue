@@ -96,6 +96,13 @@ class SiriProxy::Plugin::Hue < SiriProxy::Plugin
 		request_completed
 	end
     
+    	def setColorLoop(matchedEntity)
+    		matchedEntity.power(true)
+    		matchedEntity.effect(colorloop)
+    		say "I've color looped the #{matchedEntity.name} light for you."
+    		request_completed
+    	end
+    	
 	def setRelativeBrightness(change, matchedEntity)
 		currentBrightness = matchedEntity.brightness
         
@@ -174,5 +181,10 @@ class SiriProxy::Plugin::Hue < SiriProxy::Plugin
 		# pull n colors, where n is the number of lights
 		# set each light to color[i]
 		request_completed
+	end
+	listen_for %r/color loop (?: the)? ([a-z ]??*)(?: the)? light(?:s)?/i do |entity|
+		checkRegistration
+		matchedEntity = ensureMatchedEntity(entity)
+		setColorLoop(matchedEntity)
 	end
 end
