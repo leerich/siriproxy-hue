@@ -98,7 +98,7 @@ class SiriProxy::Plugin::Hue < SiriProxy::Plugin
     
     	def setColorLoop(matchedEntity)
     		matchedEntity.power(true)
-    		matchedEntity.effect(colorloop)
+    		matchedEntity.effect()
     		say "I've color looped the #{matchedEntity.name} light for you."
     		request_completed 
     	end
