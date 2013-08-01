@@ -32,7 +32,8 @@ class HueEntity
     
     	def effect()
     		url = "#{@bridgeIP}/api/#{@username}/lights/#{@number}/state"
-    		RestClient.put(url, {on: true}, {effect: colorloop}.to_json, content_type: :json)
+    		value = "colorloop"
+    		RestClient.put(url, on: true, {effect: value}.to_json, content_type: :json)
     	end
     	
 	def power (value)
